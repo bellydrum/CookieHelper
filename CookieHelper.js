@@ -25,22 +25,23 @@ class CookieHelper {
         })
     }
 
-    getObject(key) {
-        return this.hasKey(key) ? {key: this.getValue(key)} : undefined
+    getObjectByKey(key, returnObject={}) {
+        returnObject[key] = this.getValueByKey(key)
+        return returnObject
     }
 
-    getValue(key) {
+    getValueByKey(key) {
         const cookieObject = this.getAsObject()
         return cookieObject[key]
     }
 
-    deleteKey(key) {
+    deleteByKey(key) {
         document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     }
 
     flush(keys=Object.keys(this.getAsObject())) {
         keys.forEach(key => {
-            this.deleteKey(key)
+            this.deleteByKey(key)
         })
         return this.getAsObject()
     }
