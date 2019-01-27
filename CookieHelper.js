@@ -7,42 +7,42 @@
 
 class CookieHelper {
 
-    getAsObject(cookieObject={}) {
+    show(cookieObject={}) {
         document.cookie.split('; ').forEach(item => {
             cookieObject[item.split('=')[0]] = item.split('=')[1]
         })
         return cookieObject
     }
 
-    hasKey(key) {
-        const cookieObject = this.getAsObject()
+    has(key) {
+        const cookieObject = this.show()
         return Object.keys(cookieObject).includes(key)
     }
 
-    addObject(object) {
+    add(object) {
         Object.keys(object).forEach(key => {
             document.cookie = `${key}=${object[key]};`
         })
     }
 
-    getObjectByKey(key, returnObject={}) {
-        returnObject[key] = this.getValueByKey(key)
+    getObject(key, returnObject={}) {
+        returnObject[key] = this.getValue(key)
         return returnObject
     }
 
-    getValueByKey(key) {
-        const cookieObject = this.getAsObject()
+    getValue(key) {
+        const cookieObject = this.show()
         return cookieObject[key]
     }
 
-    deleteByKey(key) {
+    delete(key) {
         document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     }
 
-    flush(keys=Object.keys(this.getAsObject())) {
+    flush(keys=Object.keys(this.show())) {
         keys.forEach(key => {
-            this.deleteByKey(key)
+            this.delete(key)
         })
-        return this.getAsObject()
+        return this.show()
     }
 }
