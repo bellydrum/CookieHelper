@@ -9,7 +9,6 @@ class CookieHelper {
 
     show(cookieObject={}) {
         if (cookieObject.length !== undefined) {
-            console.log(cookieObject.length)
             console.log('show() does not take any arguments.')
             return null
         }
@@ -20,7 +19,7 @@ class CookieHelper {
     }
 
     has(key) {
-        if (typeof 'key' !== 'string') {
+        if (typeof key !== 'string' || key === undefined) {
             console.log('has() takes a single string argument.')
             return null
         }
@@ -29,7 +28,7 @@ class CookieHelper {
     }
 
     add(object) {
-        if (Object.entries.length === 0) {
+        if (object === undefined) {
             console.log('add() takes a non-empty object argument.')
             return null
         }
@@ -39,7 +38,7 @@ class CookieHelper {
     }
 
     getObject(key, returnObject={}) {
-        if (typeof 'key' !== 'string') {
+        if (typeof key !== 'string') {
             console.log('getObject() takes a single string argument.')
             return null
         }
@@ -48,7 +47,7 @@ class CookieHelper {
     }
 
     getValue(key) {
-        if (typeof 'key' !== 'string') {
+        if (typeof key !== 'string') {
             console.log('getValue() takes a single string argument.')
             return null
         }
@@ -57,7 +56,7 @@ class CookieHelper {
     }
 
     delete(key) {
-        if (typeof 'key' !== 'string') {
+        if (typeof key !== 'string') {
             console.log('delete() takes a single string argument.')
             return null
         }
