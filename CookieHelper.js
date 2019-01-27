@@ -8,7 +8,8 @@
 class CookieHelper {
 
     show(cookieObject={}) {
-        if (cookieObject !== {}) {
+        if (cookieObject.length !== undefined) {
+            console.log(cookieObject.length)
             console.log('show() does not take any arguments.')
             return null
         }
