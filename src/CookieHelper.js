@@ -18,7 +18,7 @@ class CookieHelper {
         return cookieObject
     }
 
-    has(key) {
+    hasKey(key) {
         if (typeof key !== 'string' || key === undefined) {
             console.log('has() takes a single string argument.')
             return null
@@ -37,16 +37,16 @@ class CookieHelper {
         })
     }
 
-    getObject(key, returnObject={}) {
+    getObjectByKey(key, returnObject={}) {
         if (typeof key !== 'string') {
             console.log('getObject() takes a single string argument.')
             return null
         }
-        returnObject[key] = this.getValue(key)
+        returnObject[key] = this.getValueByKey(key)
         return returnObject
     }
 
-    getValue(key) {
+    getValueByKey(key) {
         if (typeof key !== 'string') {
             console.log('getValue() takes a single string argument.')
             return null
@@ -55,7 +55,7 @@ class CookieHelper {
         return cookieObject[key]
     }
 
-    delete(key) {
+    deleteByKey(key) {
         if (typeof key !== 'string') {
             console.log('delete() takes a single string argument.')
             return null
@@ -65,7 +65,7 @@ class CookieHelper {
 
     flush(keys=Object.keys(this.show())) {
         keys.forEach(key => {
-            this.delete(key)
+            this.deleteByKey(key)
         })
         return this.show()
     }
