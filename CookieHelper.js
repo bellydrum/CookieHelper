@@ -28,7 +28,7 @@ class CookieHelper {
     }
 
     add(object) {
-        if (object === undefined) {
+        if (object === undefined || typeof(object) !== 'object' || Array.isArray(object)) {
             console.log('add() takes a non-empty object argument.')
             return null
         }
