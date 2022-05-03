@@ -27,13 +27,13 @@ class CookieHelper {
     return Object.keys(cookieObject).includes(key)
   }
 
-  add(object, expirationHours=6) {
+  add(object, expirationSeconds=21600) {
     if (object === undefined || typeof(object) !== 'object' || Array.isArray(object)) {
       console.log('add() takes a non-empty object argument.')
       return null
     }
     const date = new Date();
-    date.setTime(date.getTime() + (3600 * expirationHours));
+    date.setTime(date.getTime() + (1000 * expirationSeconds));
     const expires = date.toUTCString();
     let cookieString = '';
     Object.keys(object).forEach(key => {
@@ -76,3 +76,5 @@ class CookieHelper {
     return this.show()
   }
 }
+
+const cookie = new CookieHelper();
